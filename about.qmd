@@ -2,8 +2,4 @@
 title: "About"
 ---
 
-About this site
-
-```{r}
-1 + 1
-```
+This website is part of my course curriculum, but I plan to use it as a professional/personal website in the future!

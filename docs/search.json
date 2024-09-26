@@ -4,6 +4,20 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "This website is part of my course curriculum, but I plan to use it as a professional/personal website in the future!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Lydia Hefel",
+    "section": "",
+    "text": "Hello, my name is Lydia Hefel!\nI am an undergraduate student studying data science, computer science, and mathematics. I am trying to make a website!"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "I plan to upload my resume here!"
   }
 ]

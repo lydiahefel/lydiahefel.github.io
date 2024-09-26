@@ -1,7 +1,16 @@
 ---
-title: "lydiahefel.github.io"
+title: "Lydia Hefel"
+image: media/headshot.jpg
+toc: true
+about:
+  template: trestles
+  links:
+    - text: GitHub
+      href: https://github.com/lydiahefel
+    - text: Email
+      href: mailto:lydia.hefel@student.chaminade.edu
 ---
 
-```{r}
+Hello, my name is Lydia Hefel!
 
-```
+I am an undergraduate student studying data science, computer science, and mathematics. I am trying to make a website!
