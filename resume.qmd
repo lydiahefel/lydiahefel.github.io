@@ -2,4 +2,4 @@
 title: "Resume"
 ---
 
-I plan to upload my resume here!
+{{< pdf media/resume.pdf  width = 120%  height = 850  >}}

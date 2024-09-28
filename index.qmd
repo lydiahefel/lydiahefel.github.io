@@ -5,9 +5,10 @@ toc: true
 about:
   template: trestles
   links:
-    - text: GitHub
+    - icon: github
       href: https://github.com/lydiahefel
-    - text: Email
+      target: blank
+    - icon: envelope
       href: mailto:lydia.hefel@student.chaminade.edu
 ---
 

@@ -6,11 +6,16 @@ website:
   title: "Lydia Hefel"
   navbar:
     left:
+      - icon: github
+        href: https://github.com/lydiahefel
+        target: blank
       - href: index.qmd
         text: Home
       - about.qmd
       - resume.qmd
-
+  page-footer:
+    right: © Copyright 2024, Lydia Hefel
+    
 format:
   html:
     theme: journal
