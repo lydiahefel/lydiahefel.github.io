@@ -2,4 +2,4 @@
 title: "Resume"
 ---
 
-{{< pdf media/resume.pdf  width = 120%  height = 850  >}}
+{{< pdf media/resume.pdf width = 120% height = 850 >}}
