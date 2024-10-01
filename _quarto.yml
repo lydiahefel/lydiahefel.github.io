@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Lydia Hefel"
+  #favicon: media/initials.png -find good icon
   navbar:
     left:
       - icon: github
@@ -14,13 +15,14 @@ website:
       - about.qmd
       - resume.qmd
   page-footer:
-    right: © Copyright 2024, Lydia Hefel
-    
+    left: © Copyright 2024, Lydia Hefel
+    right: This website is built with [{{< fa brands r-project title="R Project" >}}](https://www.r-project.org/about.html){target=_blank}
 format:
   html:
-    theme: journal
+    theme: 
+      light: journal
+      dark: cyborg
     css: styles.css
     toc: true
 
 editor: visual
-
