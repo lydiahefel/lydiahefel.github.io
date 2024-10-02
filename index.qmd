@@ -4,6 +4,7 @@ image: media/headshot.jpg
 toc: true
 about:
   template: trestles
+  image-shape: rounded
   links:
     - icon: github
       href: https://github.com/lydiahefel
@@ -12,6 +13,6 @@ about:
       href: mailto:lydia.hefel@student.chaminade.edu
 ---
 
-Hello, my name is Lydia Hefel!
+Hello!
 
-I am an undergraduate student studying data science, computer science, and mathematics. I am trying to make a website!
+I am trying to make a website!

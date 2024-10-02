@@ -2,4 +2,4 @@
 title: "About"
 ---
 
-This website is part of my course curriculum, but I plan to use it as a professional/personal website in the future!
+I am an undergraduate student studying data science, computer science, and mathematics.
