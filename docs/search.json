@@ -25,7 +25,7 @@
     "href": "dashboard.html",
     "title": "CS201 - Flex Dashboard Final",
     "section": "",
-    "text": "olympics &lt;- read_csv(here(\"data/athlete_events.csv\"))\n\nolympics &lt;- olympics %&gt;% \n  clean_names()\ntheme_lydia &lt;- theme(\n  axis.title = element_text(family = \"Times New Roman\", size = 14,face = \"italic\"),\n  legend.title = element_text(family = \"Times New Roman\", size = 14, face = \"italic\", hjust = 0.5))"
+    "text": "olympics &lt;- read_csv(here(\"data/athlete_events.csv\"))\n\nolympics &lt;- olympics %&gt;% \n  clean_names()\ntheme_lydia &lt;- theme(\n  axis.title = element_text(family = \"Times New Roman\", size = 14,face = \"italic\"),\n  legend.title = element_text(family = \"Times New Roman\", size = 14, face = \"italic\", hjust = 0.5))\nWOMEN ATHLETES IN THE OLYMPICS\nThe Olympic dataset used can be found at https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results, it covers individual athletes - their id, name, sex, height, weight, represented country, sport, event, and medal placement. The dataset also includes the season, year, and location of each Olympic attendance. Hopefully, the data can be visualized in a few different ways that can answer the following questions about women in the Olympics. How has the participation of women athletes compared to men athletes in the Olympics? How do the height and weight of women athletes compare to that of men athletes? And, how does the proportion of medals won by women Olympians compare to those won by men Olympians?"
   },
   {
     "objectID": "dashboard.html#row-one",
@@ -37,6 +37,27 @@
   {
     "objectID": "dashboard.html#row-two-data-width1000",
     "href": "dashboard.html#row-two-data-width1000",
+    "title": "CS201 - Flex Dashboard Final",
+    "section": "Row Two {data-width=1000}",
+    "text": "Row Two {data-width=1000}\n\nParticipation of Men and Women Athletes at the Olympics\n\nyear_plot &lt;- ggplot(olympics, aes(x = year, fill = sex)) +\n  geom_bar() +\n  facet_wrap(~season) + \n  theme_lydia +\n  scale_fill_manual(values = c(\"hotpink\", \"blue\")) +\n  labs(x = \"Year\", y = \"Count\", fill = \"Gender\")\n\nggplotly(year_plot)\n\n\n\n\n\n\n\nProportion of Men and Women Athletes at the Olympics\n\nproportion_data &lt;- olympics %&gt;%\n  group_by(sex, year, season) %&gt;%\n  summarise(count = n()) %&gt;%\n  group_by(year, season) %&gt;%\n  mutate(proportion = count / sum(count) * 100)\n\n`summarise()` has grouped output by 'sex', 'year'. You can override using the\n`.groups` argument.\n\nproportion_plot &lt;- ggplot(proportion_data, aes(x = year, y = proportion, color = sex, group = season)) +\n  geom_line(size = 1.5) +\n  geom_point(size = 1.5) +\n  labs(x = \"Year\", y = \"Proportion (%)\", color = \"Gender\") +\n  facet_wrap(~season) +\n  theme_lydia +\n  scale_color_manual(values = c(\"hotpink\", \"blue\"))\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\nggplotly(proportion_plot)"
+  },
+  {
+    "objectID": "dash.html",
+    "href": "dash.html",
+    "title": "CS201 - Flex Dashboard Final",
+    "section": "",
+    "text": "olympics &lt;- read_csv(here(\"data/athlete_events.csv\"))\n\nolympics &lt;- olympics %&gt;% \n  clean_names()\ntheme_lydia &lt;- theme(\n  axis.title = element_text(family = \"Times New Roman\", size = 14,face = \"italic\"),\n  legend.title = element_text(family = \"Times New Roman\", size = 14, face = \"italic\", hjust = 0.5))\nWOMEN ATHLETES IN THE OLYMPICS\nThe Olympic dataset used can be found at https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results, it covers individual athletes - their id, name, sex, height, weight, represented country, sport, event, and medal placement. The dataset also includes the season, year, and location of each Olympic attendance. Hopefully, the data can be visualized in a few different ways that can answer the following questions about women in the Olympics. How has the participation of women athletes compared to men athletes in the Olympics? How do the height and weight of women athletes compare to that of men athletes? And, how does the proportion of medals won by women Olympians compare to those won by men Olympians?"
+  },
+  {
+    "objectID": "dash.html#row-one",
+    "href": "dash.html#row-one",
+    "title": "CS201 - Flex Dashboard Final",
+    "section": "Row One",
+    "text": "Row One\n\nComparison of the Height and Weight of Men and Women Olympians\n\nolympics_clean &lt;- na.omit(olympics) %&gt;%  # Remove rows with NA values\n  distinct(id, .keep_all = TRUE)\n\n# Filter out rows where either weight or height is NA\nheight_weight_plot &lt;- ggplot(olympics_clean, aes(x = weight, y = height, color = sex, label = name)) +\n  geom_point() +\n  facet_wrap(~sex) +\n  theme_lydia +\n  scale_color_manual(values = c(\"M\" = \"blue\", \"F\" = \"hotpink\")) +\n  labs(x = \"Weight (kg)\", y = \"Height (cm)\", color = \"Gender\")\n\nggplotly(height_weight_plot)\n\n\n\n\n\n\n\nProportion of Medals Won by Men and Women Olympians\n\nmedal_data &lt;- olympics %&gt;%\n  filter(!is.na(sex) & !is.na(medal)) %&gt;% \n  group_by(sex, medal) %&gt;%\n  summarise(count = n()) %&gt;%\n  group_by(medal) %&gt;%\n  mutate(proportion = count / sum(count) * 100)\n\n`summarise()` has grouped output by 'sex'. You can override using the `.groups`\nargument.\n\nmedal_plot &lt;- ggplot(medal_data, aes(x = medal, y = proportion, fill = sex)) +\n  geom_col() +\n  theme_lydia +\n  theme(axis.text.x = element_text(size = 10)) +\n  scale_fill_manual(values = c(\"M\" = \"blue\", \"F\" = \"hotpink\")) +\n  labs(x = \"Medal\", y = \"Proportion (%)\", fill = \"Gender\")\n\nggplotly(medal_plot)"
+  },
+  {
+    "objectID": "dash.html#row-two-data-width1000",
+    "href": "dash.html#row-two-data-width1000",
     "title": "CS201 - Flex Dashboard Final",
     "section": "Row Two {data-width=1000}",
     "text": "Row Two {data-width=1000}\n\nParticipation of Men and Women Athletes at the Olympics\n\nyear_plot &lt;- ggplot(olympics, aes(x = year, fill = sex)) +\n  geom_bar() +\n  facet_wrap(~season) + \n  theme_lydia +\n  scale_fill_manual(values = c(\"hotpink\", \"blue\")) +\n  labs(x = \"Year\", y = \"Count\", fill = \"Gender\")\n\nggplotly(year_plot)\n\n\n\n\n\n\n\nProportion of Men and Women Athletes at the Olympics\n\nproportion_data &lt;- olympics %&gt;%\n  group_by(sex, year, season) %&gt;%\n  summarise(count = n()) %&gt;%\n  group_by(year, season) %&gt;%\n  mutate(proportion = count / sum(count) * 100)\n\n`summarise()` has grouped output by 'sex', 'year'. You can override using the\n`.groups` argument.\n\nproportion_plot &lt;- ggplot(proportion_data, aes(x = year, y = proportion, color = sex, group = season)) +\n  geom_line(size = 1.5) +\n  geom_point(size = 1.5) +\n  labs(x = \"Year\", y = \"Proportion (%)\", color = \"Gender\") +\n  facet_wrap(~season) +\n  theme_lydia +\n  scale_color_manual(values = c(\"hotpink\", \"blue\"))\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\nggplotly(proportion_plot)"
