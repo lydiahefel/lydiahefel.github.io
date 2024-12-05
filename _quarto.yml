@@ -14,6 +14,7 @@ website:
         text: Home
       - about.qmd
       - resume.qmd
+      - dashboard.Rmd
   page-footer:
     left: © Copyright 2024, Lydia Hefel
     right: This website is built with [{{< fa brands r-project title="R Project" >}}](https://www.r-project.org/about.html){target=_blank}
